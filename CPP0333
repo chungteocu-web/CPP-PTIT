@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+using namespace std;
+int main()
+{
+    string s1, tmp;
+    getline(cin, s1);
+    for (int i = 0; i < s1.size(); i++)
+    {
+        s1[i] = tolower(s1[i]);
+    }
+    vector<string> v;
+    stringstream ss(s1);
+    while (ss >> tmp)
+    {
+        v.push_back(tmp);
+    }
+    for (int i = 0; i < v.size() - 1; i++)
+    {
+        v[i][0] = toupper(v[i][0]);
+    }
+    for (int i = 0; i < v[v.size() - 1].size(); i++)
+    {
+        v[v.size() - 1][i] = toupper(v[v.size() - 1][i]);
+    }
+    for (int i = 0; i < v.size() - 1; i++)
+    {
+        cout << v[i];
+        if (i == v.size() - 2)
+        {
+            cout << ",";
+        }
+        else
+            cout << " ";
+    }
+    cout << " " << v[v.size() - 1];
+}
