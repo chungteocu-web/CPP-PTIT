@@ -1,0 +1,29 @@
+# Chugn8810
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+int main()
+{
+    int m;
+    cin >> m;
+    cin.ignore();
+    while (m--)
+    {
+        string s1;
+        cin >> s1;
+        int n = s1.size(), count = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 0; j <= n - i; j++)
+            {
+                string sup = s1.substr(j, i);
+                if (sup[0] == sup[sup.size() - 1])
+                {
+                    ++count;
+                }
+            }
+        }
+        cout << count << endl;
+    }
+}
