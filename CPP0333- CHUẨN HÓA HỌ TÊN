@@ -36,4 +36,5 @@ int main()
             cout << " ";
     }
     cout << " " << v[v.size() - 1];
+
 }
