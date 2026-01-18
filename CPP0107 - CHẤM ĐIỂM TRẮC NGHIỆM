@@ -1,0 +1,74 @@
+#include <iostream>
+#include <iomanip>
+#include <map>
+using namespace std;
+int main()
+{
+    map<int, char> de101;
+    de101[1] = 'A';
+    de101[2] = 'B';
+    de101[3] = 'B';
+    de101[4] = 'A';
+    de101[5] = 'D';
+    de101[6] = 'C';
+    de101[7] = 'C';
+    de101[8] = 'A';
+    de101[9] = 'B';
+    de101[10] = 'D';
+    de101[11] = 'C';
+    de101[12] = 'C';
+    de101[13] = 'A';
+    de101[14] = 'B';
+    de101[15] = 'D';
+    map<int, char> de102;
+    de102[1] = 'A';
+    de102[2] = 'C';
+    de102[3] = 'C';
+    de102[4] = 'A';
+    de102[5] = 'B';
+    de102[6] = 'C';
+    de102[7] = 'D';
+    de102[8] = 'D';
+    de102[9] = 'B';
+    de102[10] = 'B';
+    de102[11] = 'C';
+    de102[12] = 'D';
+    de102[13] = 'D';
+    de102[14] = 'B';
+    de102[15] = 'B';
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        double diem, caudung = 0;
+        char de[15];
+        int made;
+        cin >> made;
+        for (int i = 0; i < 15; i++)
+        {
+            cin >> de[i];
+        }
+        if (made == 101)
+        {
+            for (int i = 0; i < 15; i++)
+            {
+                if (de[i] == de101[i + 1])
+                {
+                    ++caudung;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 15; i++)
+            {
+                if (de[i] == de102[i + 1])
+                {
+                    ++caudung;
+                }
+            }
+        }
+        diem = caudung * (10.0 / 15.0);
+        cout << fixed << setprecision(2) << diem << endl;
+    }
+}
