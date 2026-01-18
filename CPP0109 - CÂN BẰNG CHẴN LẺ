@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+int muso(int n)
+{
+    int sum = 1;
+    for (int i = 0; i < n; i++)
+    {
+        sum *= 10;
+    }
+    return sum;
+}
+int canbang(int n)
+{
+    int le = 0, chan = 0;
+    while (n != 0)
+    {
+        if ((n % 10) % 2 == 0)
+        {
+            ++chan;
+        }
+        else
+        {
+            ++le;
+        }
+        n /= 10;
+    }
+    if (chan == le)
+    {
+        return 1;
+    }
+    return 0;
+}
+int main()
+{
+    int n, count = 0;
+    cin >> n;
+    for (int i = muso(n - 1); i < muso(n); i++)
+    {
+        if (canbang(i))
+        {
+            ++count;
+            cout << i << " ";
+        }
+        if (count == 10)
+        {
+            count = 0;
+            cout << endl;
+        }
+    }
+}
