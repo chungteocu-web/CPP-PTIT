@@ -1,0 +1,27 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    int test;
+    cin >> test;
+    while (test--)
+    {
+        long long a;
+        cin >> a;
+        long long check = a, b = 0;
+        while (a != 0)
+        {
+            b = b * 10 + a % 10;
+            a /= 10;
+        }
+        if (check == b)
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
+    }
+}
