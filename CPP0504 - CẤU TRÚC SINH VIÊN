@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+#include <iomanip>
+using namespace std;
+struct SinhVien
+{
+    string ten, sinh, masv;
+    double mon1;
+};
+void in(struct SinhVien &a)
+{
+    if (a.sinh[1] == '/')
+        a.sinh.insert(0, 1, '0');
+    if (a.sinh[4] == '/')
+        a.sinh.insert(3, 1, '0');
+    cout << "B20DCCN001 ";
+    cout << a.ten << " ";
+    cout << a.masv << " ";
+    cout << a.sinh << " ";
+    cout << fixed << setprecision(2) << a.mon1;
+}
+void nhap(struct SinhVien &a)
+{
+    getline(cin, a.ten);
+    cin >> a.masv;
+    cin >> a.sinh;
+    cin >> a.mon1;
+}
+int main(){
+    struct SinhVien a;
+    nhap(a);
+    in(a);
+    return 0;
+}
