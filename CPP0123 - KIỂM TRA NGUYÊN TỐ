@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+long long ucln(long long a)
+{
+    if (a < 2)
+        return 0;
+    for (int i = 2; i * i <= a; i++)
+    {
+        if (a % i == 0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    long long a, bc = 1, uc;
+    cin >> a;
+    if (ucln(a))
+        cout << "YES";
+    else
+        cout << "NO";
+}
