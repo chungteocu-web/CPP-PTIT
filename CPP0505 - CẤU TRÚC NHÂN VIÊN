@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+#include <iomanip>
+using namespace std;
+struct NhanVien
+{
+    string ten, sinh, gioitinh, masv, que, ma, ngay;
+};
+void in(struct NhanVien &a)
+{
+    cout << "00001 ";
+    cout << a.ten << " ";
+    cout << a.gioitinh << " ";
+    cout << a.sinh << " ";
+    cout << a.que << " ";
+    cout << a.ma << " ";
+    cout << a.ngay << " ";
+}
+void nhap(struct NhanVien &a)
+{
+    getline(cin, a.ten);
+    cin >> a.gioitinh;
+    cin >> a.sinh;
+    cin.ignore();
+    getline(cin, a.que);
+    cin >> a.ma;
+    cin >> a.ngay;
+}
+int main(){
+    struct NhanVien a;
+    nhap(a);
+    in(a);
+    return 0;
+}
