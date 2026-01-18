@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+#include <iomanip>
+using namespace std;
+struct NhanVien
+{
+    string s, sinh, gioitinh, que, ma, ngay;
+};
+void inds(struct NhanVien ds[], int N)
+{
+    for (int i = 1; i <= N; i++)
+    {
+        if (i >= 10)
+        {
+            cout << "000";
+        }
+        else
+        {
+            cout << "0000";
+        }
+        cout << i << " ";
+        cout << ds[i - 1].s << " " << ds[i - 1].gioitinh << " " << ds[i - 1].sinh << " " << ds[i - 1].que << " " << ds[i - 1].ma << " " << ds[i - 1].ngay << endl;
+    }
+}
+int z = 0;
+void nhap(struct NhanVien &a)
+{
+    if (z == 0)
+        getchar();
+    z++;
+    getline(cin, a.s);
+    getline(cin, a.gioitinh);
+    getline(cin, a.sinh);
+    getline(cin, a.que);
+    getline(cin, a.ma);
+    getline(cin, a.ngay);
+}
+int main(){
+    struct NhanVien ds[50];
+    int N,i;
+    cin >> N;
+    for(i = 0; i < N; i++) nhap(ds[i]);
+    inds(ds,N);
+    return 0;
+}
