@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+int a[100000] = {0};
+void uocso(int n, int m)
+{
+    int check = 0;
+    for (int i = 2; i * i <= n; i++)
+    {
+        while (n % i == 0)
+        {
+            check++;
+            if (check == m)
+            {
+                cout << i << endl;
+                return;
+            }
+            n /= i;
+        }
+    }
+    if (n > 1)
+    {
+        ++check;
+        if (check == m)
+        {
+            cout << n << endl;
+            return;
+        }
+    }
+    cout << "-1" << endl;
+}
+int main()
+{
+    int c;
+    cin >> c;
+    while (c--)
+    {
+        int b, d;
+        cin >> b >> d;
+        uocso(b, d);
+    }
+}
