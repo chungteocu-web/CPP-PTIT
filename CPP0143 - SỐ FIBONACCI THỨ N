@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+long long a[93];
+void fibo()
+{
+    a[1] = 1;
+    a[2] = 1;
+    long long fn, fn1 = 1, fn2 = 1;
+    for (int i = 3; i < 93; i++)
+    {
+        fn = fn1 + fn2;
+        a[i] = fn;
+        fn1 = fn2;
+        fn2 = fn;
+    }
+}
+int main()
+{
+    fibo();
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int b;
+        cin >> b;
+        cout << a[b] << endl;
+    }
+}
