@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <algorithm>
+#include <vector>
+using namespace std;
+int main()
+{
+    int k;
+    cin >> k;
+    while (k--)
+    {
+        int m, n, max = 0;
+        cin >> m;
+        vector<int> a(m);
+        map<int, int> mp;
+        for (int i = 0; i < m; i++)
+        {
+            cin >> n;
+            mp[n]++;
+            if (n > max)
+            {
+                max = n;
+            }
+        }
+        int check2 = 0;
+        for (int i = 1; i <= max; i++)
+        {
+            if (mp[i] == m)
+            {
+                check2 = 1;
+            }
+        }
+        if (check2 == 1)
+        {
+            cout << "-1" << endl;
+            continue;
+            ;
+        }
+        int check = 0;
+        for (int i = 1; i <= max; i++)
+        {
+            if (check == 2)
+            {
+                break;
+            }
+
+            if (mp[i] != 0)
+            {
+                cout << i << " ";
+                check++;
+            }
+        }
+        cout << endl;
+    }
+}
