@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    int c;
+    cin >> c;
+    while (c--)
+    {
+        int a, check = 0;
+        cin >> a;
+        for (int i = 2; i * i <= a; i++)
+        {
+            int check = 0;
+            while (a % i == 0)
+            {
+                check++;
+                a /= i;
+            }
+            if (check != 0)
+                cout << i << " " << check << " ";
+        }
+        if (a > 1)
+        {
+            cout << a << " " << 1;
+        }
+        cout << endl;
+    }
+}
