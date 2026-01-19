@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+int max(int a, int b)
+{
+    if (b > a)
+    {
+        return b;
+    }
+    return a;
+}
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int a;
+        cin >> a;
+        int A[a];
+        for (int i = 0; i < a; i++)
+        {
+            cin >> A[i];
+        }
+        int min = A[0];
+        int minketqua = -1;
+        for (int i = 1; i < a; i++)
+        {
+            if (A[i] > min)
+            {
+                minketqua = max(minketqua, A[i] - min);
+            }
+            if (A[i] < min)
+            {
+                min = A[i];
+            }
+        }
+        cout << minketqua << endl;
+    }
+}
