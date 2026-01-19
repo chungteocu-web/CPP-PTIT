@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int a, b;
+        cin >> a >> b;
+        int A[a * a];
+        for (int i = 0; i < a * a; i++)
+        {
+
+            cin >> A[i];
+        }
+        sort(A, A + a * a);
+        cout << A[b - 1] << endl;
+    }
+}
