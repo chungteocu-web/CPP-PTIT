@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+int main()
+{
+    //dung 2 con tro
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int a, L, R;
+        cin >> a;
+        int A[a];
+        for (int i = 0; i < a; i++)
+        {
+            cin >> A[i];
+        }
+        cin >> L >> R;
+        int vitridinh = -1;
+        for (int i = L; i < R; i++)
+        {
+            if (A[i] > A[i + 1])
+            {
+                vitridinh = i;
+                break;
+            }
+        }
+        int check = 0;
+        if (vitridinh != -1)
+        {
+            for (int i = vitridinh; i < R; i++)
+            {
+                if (A[i] < A[i + 1])
+                {
+                    check++;
+                    break;
+                }
+            }
+        }
+        if (vitridinh == -1)
+        {
+            cout << "Yes\n";
+        }
+        else if (check == 0)
+        {
+            cout << "Yes\n";
+        }
+        else
+        {
+            cout << "No\n";
+        }
+    }
+}
