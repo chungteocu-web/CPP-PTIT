@@ -1,0 +1,76 @@
+#include <iostream>
+#include <algorithm>
+#include <set>
+#include <string>
+#include <sstream>
+using namespace std;
+string cong(string a, string b)
+{
+    while (a.size() > b.size())
+    {
+        b = "0" + b;
+    }
+    while (a.size() < b.size())
+    {
+        a = "0" + a;
+    }
+    string x;
+    int nho = 0;
+    for (int i = a.size() - 1; i >= 0; i--)
+    {
+        int so1 = a[i] - '0', so2 = b[i] - '0';
+        int sum = so1 + so2 + nho;
+        x += ((sum % 10) + '0');
+        nho = sum / 10;
+    }
+    if (nho > 0)
+    {
+        x += "1";
+    }
+    reverse(x.begin(), x.end());
+    return x;
+}
+int main()
+{
+    int m;
+    cin >> m;
+    cin.ignore();
+    while (m--)
+    {
+        string s1, s2, tmp;
+        cin >> s1 >> s2;
+        string s1max = s1.substr(0, s1.size()), s2max = s2.substr(0, s2.size());
+        string s1min = s1.substr(0, s1.size()), s2min = s2.substr(0, s2.size());
+        for (int i = 0; i < s1max.size(); i++)
+        {
+            if (s1max[i] == '5')
+            {
+                s1max[i] = '6';
+            }
+        }
+        for (int i = 0; i < s1min.size(); i++)
+        {
+            if (s1min[i] == '6')
+            {
+                s1min[i] = '5';
+            }
+        }
+        for (int i = 0; i < s2max.size(); i++)
+        {
+            if (s2max[i] == '5')
+            {
+                s2max[i] = '6';
+            }
+        }
+        for (int i = 0; i < s2min.size(); i++)
+        {
+            if (s2min[i] == '6')
+            {
+                s2min[i] = '5';
+            }
+        }
+        string tmpmax = cong(s1max, s2max), tmpmin = cong(s1min, s2min);
+        long long max = stoll(tmpmax), min = stoll(tmpmin);
+        cout << min << " " << max << endl;
+    }
+}
