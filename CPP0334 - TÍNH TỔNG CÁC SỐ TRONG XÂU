@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <algorithm>
+#include <map>
+using namespace std;
+int main()
+{
+    int m;
+    cin >> m;
+    cin.ignore();
+    while (m--)
+    {
+        string a, tmp;
+        cin >> a;
+        int sum = 0;
+        for (int i = 0; i < a.size(); i++)
+        {
+            if (a[i] >= '0' && a[i] <= '9')
+            {
+                for (int j = i; j < a.size(); j++)
+                {
+                    if (a[j] < '0' || a[j] > '9')
+                    {
+                        i = j;
+                        break;
+                    }
+                    else if (a[a.size() - 1] >= '0' && a[a.size() - 1] <= '9')
+                    {
+                        i = a.size();
+                    }
+                    tmp.push_back(a[j]);
+                }
+                sum += stoi(tmp);
+                tmp.clear();
+            }
+        }
+        cout << sum << endl;
+    }
+}
