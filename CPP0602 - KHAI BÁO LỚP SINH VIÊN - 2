@@ -1,0 +1,35 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+struct SinhVien
+{
+    string masv = "B20DCCN001", ten, lop, ngaysinh;
+    double GPA;
+    friend istream &operator>>(istream &vao, SinhVien &sv)
+    {
+        getline(vao, sv.ten);
+        vao >> sv.lop >> sv.ngaysinh >> sv.GPA;
+
+        if (sv.ngaysinh[1] == '/')
+        {
+            sv.ngaysinh.insert(0, 1, '0');
+        }
+        if (sv.ngaysinh[4] == '/')
+        {
+            sv.ngaysinh.insert(3, 1, '0');
+        }
+        return vao;
+    }
+    friend ostream &operator<<(ostream &xuat, const SinhVien &sv)
+    {
+        xuat << sv.masv << " " << sv.ten << " " << sv.lop << " " << sv.ngaysinh << " " << fixed << setprecision(2) << sv.GPA << endl;
+        return xuat;
+    }
+};
+
+int main(){
+    SinhVien a;
+    cin >> a;
+    cout << a;
+    return 0;
+}
