@@ -1,0 +1,49 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <vector>
+#include <string>
+#include <sstream>
+using namespace std;
+long long ucln(long long a, long long b)
+{
+    while (b != 0)
+    {
+        long long tmp = a % b;
+        a = b;
+        b = tmp;
+    }
+    return a;
+}
+struct PhanSo
+{
+    long long tu, mau;
+};
+typedef struct PhanSo PhanSo;
+void process(PhanSo &a, PhanSo &b)
+{
+    PhanSo c, d;
+    c.mau = a.mau * b.mau;
+    c.tu = a.mau * b.tu + a.tu * b.mau;
+    c.mau = pow(c.mau, 2);
+    c.tu = pow(c.tu, 2);
+    long long tmp1 = ucln(c.mau, c.tu);
+    c.mau = c.mau / tmp1;
+    c.tu = c.tu / tmp1;
+    d.mau = a.mau * b.mau * c.mau;
+    d.tu = a.tu * b.tu * c.tu;
+    long long tmp2 = ucln(d.mau, d.tu);
+    d.mau = d.mau / tmp2;
+    d.tu = d.tu / tmp2;
+    cout << c.tu << "/" << c.mau << " " << d.tu << "/" << d.mau << endl;
+}
+int main() {
+	int t;
+	cin >> t;
+	while (t--) {
+		PhanSo A;
+		PhanSo B;
+		cin >> A.tu >> A.mau >> B.tu >> B.mau;
+		process(A, B);
+	}
+}
