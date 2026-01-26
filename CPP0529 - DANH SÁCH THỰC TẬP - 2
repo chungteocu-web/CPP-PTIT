@@ -1,0 +1,53 @@
+#include <iostream>
+#include <map>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+using namespace std;
+int check = 1;
+struct thuctap
+{
+    string stt, masv, ten, lop, mail, cty;
+};
+typedef struct thuctap thuctap;
+void nhap(thuctap &a)
+{
+    a.stt = to_string(check++);
+    getline(cin, a.masv);
+    getline(cin, a.ten);
+    getline(cin, a.lop);
+    getline(cin, a.mail);
+    getline(cin, a.cty);
+}
+void xuat(thuctap &a)
+{
+    cout << a.stt << " " << a.masv << " " << a.ten << " " << a.lop << " " << a.mail << " " << a.cty << endl;
+}
+bool sosanh(thuctap &a, thuctap &b)
+{
+    return a.masv < b.masv;
+}
+int main()
+{
+    int n, m;
+    cin >> n;
+    thuctap ds[n];
+    cin.ignore();
+    for (int i = 0; i < n; i++)
+    {
+        nhap(ds[i]);
+    }
+    cin >> m;
+    sort(ds, ds + n, sosanh);
+    while (m--)
+    {
+        string s;
+        cin >> s;
+        for (int i = 0; i < n; i++)
+        {
+            if (s == ds[i].cty)
+                xuat(ds[i]);
+        }
+    }
+}
