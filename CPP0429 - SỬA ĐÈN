@@ -1,0 +1,42 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <cmath>
+using namespace std;
+int main()
+{
+    int n, k, x;
+    cin >> n >> k >> x;
+    vector<int> a(n, 1);
+    for (int i = 0; i < x; i++)
+    {
+        int tmp;
+        cin >> tmp;
+        a[tmp - 1] = 0;
+    }
+    int ans = 0;
+    for (int i = 0; i < k; i++)
+    {
+        if (a[i] == 1)
+        {
+            ++ans;
+        }
+    }
+    int max = ans;
+    for (int i = k; i < n; i++)
+    {
+        if (a[i - k] == 1)
+        {
+            --ans;
+        }
+        if (a[i] == 1)
+        {
+            ++ans;
+        }
+        if (max < ans)
+        {
+            max = ans;
+        }
+    }
+    cout << k - max << endl;
+}
