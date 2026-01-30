@@ -1,0 +1,27 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <map>
+using namespace std;
+long long MOD = 1e9 + 7, a[1005];
+void fibo()
+{
+    a[0] = 0;
+    a[1] = 1;
+    for (int i = 2; i <= 1000; i++)
+    {
+        a[i] = (a[i - 1] + a[i - 2]) % MOD;
+    }
+}
+int main()
+{
+    int m;
+    cin >> m;
+    fibo();
+    while (m--)
+    {
+        long long b;
+        cin >> b;
+        cout << a[b] << endl;
+    }
+}
