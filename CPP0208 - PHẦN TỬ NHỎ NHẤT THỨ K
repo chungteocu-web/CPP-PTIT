@@ -1,0 +1,25 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+void xuly(int a, vector<int> &b, int c)
+{
+    sort(b.begin(), b.end());
+    cout << b[c - 1] << endl;
+}
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int a, c;
+        cin >> a >> c;
+        vector<int> b(a);
+        for (int i = 0; i < a; i++)
+        {
+            cin >> b[i];
+        }
+        xuly(a, b, c);
+    }
+}
