@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+void xuly(long long a, long long b)
+{
+    long long sum = 0;
+    for (long long i = 1; i <= a; i++)
+    {
+        sum += i % b;
+    }
+    if (sum == b)
+    {
+        cout << "1" << endl;
+    }
+    else
+        cout << "0" << endl;
+}
+
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        long long a, b;
+        cin >> a >> b;
+        xuly(a, b);
+    }
+}
