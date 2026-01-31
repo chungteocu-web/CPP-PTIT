@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+int main()
+{
+    int m;
+    cin >> m;
+    cin.ignore(1);
+    while (m--)
+    {
+        string s1, tmp;
+        getline(cin, s1);
+        int count = 0;
+        stringstream s2(s1);
+        while (s2 >> tmp)
+        {
+            ++count;
+        }
+        cout << count << endl;
+    }
+}
