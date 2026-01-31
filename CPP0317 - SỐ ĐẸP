@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <map>
+using namespace std;
+
+int main()
+{
+    int m;
+    cin >> m;
+    cin.ignore();
+    while (m--)
+    {
+        string s1;
+        cin >> s1;
+        int tro1 = 0, tro2 = s1.size() - 1, check = 1;
+        while (tro1 <= tro2)
+        {
+            if (s1[tro1] != s1[tro2])
+            {
+                check = 0;
+                break;
+            }
+            int n1 = s1[tro1] - '0', n2 = s1[tro2] - '0';
+            if (n1 % 2 != 0 || n2 % 2 != 0)
+            {
+                check = 0;
+                break;
+            }
+            tro1++;
+            tro2--;
+        }
+        if (check == 1)
+        {
+            cout << "YES\n";
+        }
+        else
+        {
+            cout << "NO\n";
+        }
+    }
+}
