@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <map>
+using namespace std;
+int main()
+{
+    map<char, int> ss;
+    string s1;
+    cin >> s1;
+    for (int i = 0; i < s1.size(); i++)
+    {
+        s1[i] = tolower(s1[i]);
+    }
+    for (int i = 0; i < s1.size(); i++)
+    {
+        if (s1[i] == 'a' || s1[i] == 'e' || s1[i] == 'i' || s1[i] == 'u' || s1[i] == 'y' || s1[i] == 'o')
+        {
+            continue;
+        }
+        else
+        {
+            cout << ".";
+            cout << s1[i];
+        }
+    }
+}
