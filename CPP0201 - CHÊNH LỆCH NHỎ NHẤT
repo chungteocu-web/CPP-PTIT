@@ -1,0 +1,34 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void xuly(int a, int b[])
+{
+    sort(b, b + a);
+    int min = 999999999;
+    for (int i = 1; i < a; i++)
+    {
+        if ((b[i] - b[i-1]) < min)
+        {
+            min = b[i] - b[i-1];
+        }
+    }
+    cout << min << endl;
+}
+
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int a;
+        cin >> a;
+        int b[a];
+        for (int i = 0; i < a; i++)
+        {
+            cin >> b[i];
+        }
+        xuly(a, b);
+    }
+}
