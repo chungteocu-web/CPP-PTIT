@@ -1,0 +1,47 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <map>
+using namespace std;
+
+void daycon(int mang[], int a, int k)
+{
+    int tong = 0;
+    for (int i = 0; i < k; i++)
+    {
+        tong += mang[i];
+    }
+    int max = tong, vitri = k - 1;
+    for (int i = k; i < a; i++)
+    {
+        tong += mang[i];
+        tong -= mang[i - k];
+        if (max < (tong))
+        {
+            max = tong;
+            vitri = i;
+        }
+    }
+    for (int i = vitri - k + 1; i <= vitri; i++)
+    {
+        cout << mang[i] << " ";
+    }
+    cout << endl;
+}
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int a, b;
+        cin >> a >> b;
+        int mang[a];
+        for (int i = 0; i < a; i++)
+        {
+            cin >> mang[i];
+        }
+        daycon(mang, a, b);
+    }
+}
