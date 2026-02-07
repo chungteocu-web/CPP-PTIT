@@ -1,0 +1,57 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <map>
+#include <cmath>
+using namespace std;
+
+void daycon(long long mang[], int a)
+{
+    if (a == 0)
+    {
+        cout << mang[0] << endl;
+        return;
+    }
+    else if (a == 1)
+    {
+        cout << max(mang[0], mang[1]) << endl;
+        return;
+    }
+    else
+    {
+        long long vitri1 = mang[0], vitri2 = mang[1], tongtmp = mang[0] + mang[2];
+        for (int i = 3; i < a; i++)
+        {
+            long long tmp = mang[i];
+            if (vitri1 < vitri2)
+            {
+                tmp += vitri2;
+            }
+            else
+            {
+                tmp += vitri1;
+            }
+            vitri1 = vitri2;
+            vitri2 = tongtmp;
+            tongtmp = tmp;
+        }
+        cout << max(tongtmp, vitri2) << endl;
+    }
+}
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int a;
+        cin >> a;
+        long long mang[a];
+        for (int i = 0; i < a; i++)
+        {
+            cin >> mang[i];
+        }
+        daycon(mang, a);
+    }
+}
