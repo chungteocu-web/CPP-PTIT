@@ -1,0 +1,59 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <set>
+#include <map>
+#include <cmath>
+using namespace std;
+int dem(int n)
+{
+    int sum = 1, count = 0;
+    while (sum <= n)
+    {
+        count++;
+        sum *= 2;
+    }
+    return count;
+}
+int main()
+{
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        int m;
+        cin >> m;
+        int a[m];
+        for (int i = 0; i < m; i++)
+        {
+            cin >> a[i];
+        }
+        int thaotac = 0, max = 0;
+        for (int i = 0; i < m; i++)
+        {
+            int sum = 0, bit1 = 0;
+            while (a[i] > 0)
+            {
+                if (a[i] % 2 == 0)
+                {
+                    a[i] /= 2;
+                    sum++;
+                }
+                else
+                {
+                    a[i] /= 2;
+                    sum++;
+                    bit1++;
+                }
+            }
+            if (max < sum)
+            {
+                max = sum;
+            }
+            thaotac += bit1;
+        }
+        thaotac += max;
+        cout << thaotac - 1 << endl;
+    }
+}
