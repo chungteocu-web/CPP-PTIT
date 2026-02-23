@@ -1,0 +1,49 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <set>
+#include <map>
+#include <cmath>
+using namespace std;
+int const MAXLIST = 10000;
+struct list
+{
+    int n;
+    vector<int> nodes;
+};
+typedef struct list list;
+
+int main()
+{
+    int x;
+    list ds;
+    while (cin >> x)
+    {
+        ds.nodes.push_back(x);
+    }
+    for (int i = 0; i < ds.nodes.size(); i++)
+    {
+        int check = 0;
+        for (int j = 0; j < i; j++)
+        {
+            if (ds.nodes[i] == ds.nodes[j])
+            {
+                check = 1;
+                break;
+            }
+        }
+        if (check != 1)
+        {
+            int sum = 0;
+            for (int j = i; j < ds.nodes.size(); j++)
+            {
+                if (ds.nodes[i] == ds.nodes[j])
+                {
+                    ++sum;
+                }
+            }
+            cout << ds.nodes[i] << " " << sum << endl;
+        }
+    }
+}
