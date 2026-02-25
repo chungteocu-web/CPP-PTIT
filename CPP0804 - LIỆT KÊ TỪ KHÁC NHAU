@@ -1,0 +1,25 @@
+#include <iostream>
+#include <utility>
+#include <set>
+#include <fstream>
+#include <string>
+using namespace std;
+int main()
+{
+    set<string> mp;
+    ifstream f("VANBAN.in");
+    string m;
+    while (f >> m)
+    {
+        for (int i = 0; i < m.size(); i++)
+        {
+            m[i] = tolower(m[i]);
+        }
+        mp.insert(m);
+    }
+    for (auto x : mp)
+    {
+        cout << x << endl;
+    }
+    f.close();
+}
