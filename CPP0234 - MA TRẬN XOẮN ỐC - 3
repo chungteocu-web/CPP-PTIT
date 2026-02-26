@@ -1,0 +1,58 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <deque>
+#include <vector>
+#include <algorithm>
+#include <cstring>
+using namespace std;
+void solve()
+{
+    int a, b, c;
+    cin >> a >> b >> c;
+    int m[a][b], m1[a * b], p = 0;
+    for (auto &r : m)
+        for (auto &h : r)
+            cin >> h;
+    int h1 = 0, h2 = a - 1, c1 = 0, c2 = b - 1;
+    while (h1 <= h2 && c1 <= c2)
+    {
+        for (int i = c1; i <= c2; i++)
+        {
+            m1[p++] = m[h1][i];
+        }
+        h1++;
+        for (int i = h1; i <= h2; i++)
+        {
+            m1[p++] = m[i][c2];
+        }
+        c2--;
+        if (c2 > c1)
+        {
+            for (int i = c2; i >= c1; i--)
+            {
+                m1[p++] = m[h2][i];
+            }
+            h2--;
+        }
+        if (h2 > h1)
+        {
+            for (int i = h2; i >= h1; i--)
+            {
+                m1[p++] = m[i][c1];
+            }
+            c1++;
+        }
+    }
+    cout << m1[c - 1] << endl;
+}
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        solve();
+    }
+    return 0;
+}
