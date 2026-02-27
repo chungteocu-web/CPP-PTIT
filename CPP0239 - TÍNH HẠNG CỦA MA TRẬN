@@ -1,0 +1,75 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <deque>
+#include <vector>
+#include <algorithm>
+#include <cstring>
+using namespace std;
+void swaprow(vector<vector<double>> &m, int row1, int row2, int col)
+{
+    for (int i = 0; i < col; i++)
+    {
+        swap(m[row1][i], m[row2][i]);
+    }
+}
+void solve()
+{
+    int row, col;
+    cin >> row >> col;
+    vector<vector<double>> m(row, vector<double>(col));
+    for (auto &r : m)
+        for (auto &h : r)
+            cin >> h;
+    int rank = col;
+    for (int i = 0; i < rank; i++)
+    {
+        if (m[i][i])
+        {
+            for (int j = 0; j < row; j++)
+            {
+                if (i != j)
+                {
+                    double x = m[j][i] / m[i][i];
+                    for (int l = 0; l < rank; l++)
+                    {
+                        m[j][l] -= x * m[i][l];
+                    }
+                }
+            }
+        }
+        else
+        {
+            int ok = 1;
+            for (int j = i + 1; j < row; j++)
+            {
+                if (m[j][i])
+                {
+                    swaprow(m, j, i, rank);
+                    ok = 0;
+                    break;
+                }
+            }
+            if (ok)
+            {
+                rank--;
+                for (int j = 0; j < row; j++)
+                {
+                    m[j][i] = m[j][rank];
+                }
+            }
+            i--;
+        }
+    }
+    cout << rank << endl;
+}
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        solve();
+    }
+    return 0;
+}
