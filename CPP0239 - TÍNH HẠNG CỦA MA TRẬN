@@ -53,6 +53,10 @@ void solve()
             if (check != 1)
             {
                 rank--;
+                for (int j = 0; j < row; j++)
+                {
+                    m[j][i] = m[j][rank];
+                }
             }
             i--;
         }
