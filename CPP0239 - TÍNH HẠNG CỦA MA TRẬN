@@ -24,43 +24,48 @@ void solve()
     int rank = col;
     for (int i = 0; i < rank; i++)
     {
-        if (m[i][i])
+        if (m[i][i] != 0)
         {
             for (int j = 0; j < row; j++)
             {
                 if (i != j)
                 {
-                    double x = m[j][i] / m[i][i];
-                    for (int l = 0; l < rank; l++)
+                    double heso = m[j][i] / m[i][i];
+                    for (int k = 0; k < rank; k++)
                     {
-                        m[j][l] -= x * m[i][l];
+                        m[j][k] = m[j][k] - heso * m[i][k];
                     }
                 }
             }
         }
         else
         {
-            int ok = 1;
+            int check = 0;
             for (int j = i + 1; j < row; j++)
             {
                 if (m[j][i])
                 {
-                    swaprow(m, j, i, rank);
-                    ok = 0;
+                    swaprow(m, j, i, col);
+                    check = 1;
                     break;
                 }
             }
-            if (ok)
+            if (check != 1)
             {
                 rank--;
-                for (int j = 0; j < row; j++)
-                {
-                    m[j][i] = m[j][rank];
-                }
             }
             i--;
         }
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++)
+            {
+                cout << m[i][j] << " ";
+            }
+            cout << endl;
+        }
     }
+
     cout << rank << endl;
 }
 int main()
