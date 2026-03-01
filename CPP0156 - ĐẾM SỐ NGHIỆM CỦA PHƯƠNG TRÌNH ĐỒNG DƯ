@@ -1,0 +1,32 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <deque>
+#include <vector>
+#include <algorithm>
+#include <cstring>
+using namespace std;
+
+void solve()
+{
+    long long b, p, tong = 0;
+    cin >> b >> p;
+    for (long long i = 1; i <= b && i <= p; i++)
+    {
+        if ((i * i) % p == 1)
+        {
+            tong += ((b - i) / p + 1);
+        }
+    }
+    cout << tong << endl;
+}
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        solve();
+    }
+    return 0;
+}
