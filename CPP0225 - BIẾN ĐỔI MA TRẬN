@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <set>
+#include <stdbool.h>
+#include <vector>
+#include <algorithm>
+#include <cstring>
+#include <fstream>
+using namespace std;
+int matran[105][105], a, b;
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int dem = 0;
+        cin >> a;
+        for (int i = 0; i < a; i++)
+        {
+            for (int j = 0; j < a; j++)
+            {
+                cin >> matran[i][j];
+            }
+        }
+        int maxx = 0, tru = 0;
+        for (int i = 0; i < a; i++)
+        {
+            int tmp = 0;
+            for (int j = 0; j < a; j++)
+            {
+                tmp += matran[i][j];
+            }
+            tru += tmp;
+            maxx = max(tmp, maxx);
+        }
+        int maxx1 = 0, tru1 = 0, dem1 = 0;
+        for (int i = 0; i < a; i++)
+        {
+            int tmp = 0;
+            for (int j = 0; j < a; j++)
+            {
+                tmp += matran[j][i];
+            }
+            maxx1 = max(tmp, maxx1);
+        }
+        if (maxx > maxx1)
+        {
+            maxx1 = maxx;
+        }
+        cout << maxx1 * a - tru << endl;
+    }
+}
