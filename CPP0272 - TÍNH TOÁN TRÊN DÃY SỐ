@@ -1,0 +1,51 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <set>
+using namespace std;
+const int MOD = 1e9 + 7;
+int ucln(long long a, long long b)
+{
+    while (b != 0)
+    {
+        long long tmp = a % b;
+        a = b;
+        b = tmp;
+    }
+    return a;
+}
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        long long n, k;
+        cin >> n;
+        long long a[n];
+        for (long long &i : a)
+            cin >> i;
+        long long uc = a[0], sum = a[0] % MOD;
+        for (int i = 1; i < n; i++)
+        {
+            sum = (sum * a[i] % MOD) % MOD;
+            uc = ucln(uc, a[i]);
+        }
+        long long res = 1;
+        while (uc != 0)
+        {
+            if (uc % 2 == 0)
+            {
+                sum = ((sum % MOD) * (sum % MOD)) % MOD;
+                uc /= 2;
+            }
+            else
+            {
+                res = ((res % MOD) * (sum % MOD)) % MOD;
+                uc--;
+            }
+        }
+        cout << res << endl;
+    }
+}
