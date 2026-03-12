@@ -1,0 +1,33 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <iomanip>
+#include <map>
+using namespace std;
+struct toado
+{
+    double x, y;
+};
+int main()
+{
+    int m;
+    cin >> m;
+    while (m--)
+    {
+        int n;
+        cin >> n;
+        struct toado ds[n];
+        double sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            cin >> ds[i].x >> ds[i].y;
+        }
+        for (int i = 0; i <= n - 2; i++)
+        {
+            sum += (ds[i].x * ds[i + 1].y - (ds[i + 1].x * ds[i].y));
+        }
+        sum += (ds[n - 1].x * ds[0].y - ds[0].x * ds[n - 1].y);
+        sum = (double)1 / 2 * abs(sum);
+        cout << fixed << setprecision(3) << sum << endl;
+    }
+}
