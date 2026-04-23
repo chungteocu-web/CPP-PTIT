@@ -1,0 +1,79 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+long long cecil(long long a, long long m)
+{
+    if (a >= 0)
+        return ((a + m - 1) / m);
+    else
+        return -((-a) / m);
+}
+long long floor(long long a, long long m)
+{
+    if (a >= 0)
+        return a / m;
+    else
+        return -((-a + m - 1) / m);
+}
+long long traveso(string s)
+{
+    string xautmp;
+    long long dau = 0, so = 0;
+    if (s[0] == '-')
+    {
+        dau = -1;
+        xautmp = s.substr(1);
+    }
+    else
+    {
+        dau = 1;
+        xautmp = s.substr(0);
+    }
+    int check = 0, count = 0;
+    for (int i = 0; i < xautmp.size(); i++)
+    {
+        if (xautmp[i] == '.')
+        {
+            check = 1;
+            continue;
+        }
+        if (check != 0)
+            count++;
+        so = so * 10 + xautmp[i] - '0';
+    }
+    while (count < 4)
+    {
+        count++;
+        so *= 10;
+    }
+    return so * dau;
+}
+int main()
+{
+    long long sum = 0;
+    string xs, ys, rs;
+    cin >> xs >> ys >> rs;
+    int m = 10000;
+    long long x = traveso(xs);
+    long long y = traveso(ys);
+    long long r = traveso(rs);
+    long long bd = cecil(x - r, m), kt = floor(x + r, m);
+    for (long long i = bd; i <= kt; i++)
+    {
+        long double d = (long double)r * r - (long double)(i * m - x) * (i * m - x);
+        if (d >= 0)
+        {
+            long long d2 = sqrt(d);
+            while ((long double)(d2 + 1) * (d2 + 1) <= d)
+                d2++;
+            while ((long double)d2 * d2 > d)
+                d2--;
+            long long duoi = cecil(y - d2, m), tren = floor(d2 + y, m);
+            if (tren >= duoi)
+            {
+                sum += (tren - duoi + 1);
+            }
+        }
+    }
+    cout << sum;
+}
